@@ -1,11 +1,11 @@
 {
   "$schema": "https://ui.shadcn.com/schema.json",
   "style": "base-nova",
-  "rsc": false,
+  "rsc": true,
   "tsx": true,
   "tailwind": {
     "config": "",
-    "css": "src/app/styles/theme.css",
+    "css": "src/shared/styles/theme.css",
     "baseColor": "neutral",
     "cssVariables": true,
     "prefix": ""
@@ -13,7 +13,7 @@
   "iconLibrary": "tabler",
   "menuColor": "default",
   "menuAccent": "subtle",
-  "registries": {},                              
+  "registries": {},
   "aliases": {
     "components": "@/shared/components",
     "utils": "@/shared/lib/utils",

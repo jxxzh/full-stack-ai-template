@@ -1,5 +1,7 @@
-import { Button } from '@/shared/components/ui/button'
+'use client'
+
 import { atom, useAtom } from 'jotai'
+import { Button } from '@/shared/components/ui/button'
 
 const countAtom = atom(0)
 countAtom.debugLabel = 'countAtom'

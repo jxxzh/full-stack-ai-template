@@ -8,17 +8,18 @@ export const env = createEnv({
    * The prefix that client-side variables must have. This is enforced both at
    * a type-level and at runtime.
    */
-  clientPrefix: 'VITE_',
+  clientPrefix: 'NEXT_PUBLIC_',
 
   client: {
-    VITE_BASE_URL: z.url(),
+    NEXT_PUBLIC_ENV: z.enum(['dev', 'prod']),
+    NEXT_PUBLIC_API_BASE_URL: z.url(),
   },
 
   /**
    * What object holds the environment variables at runtime. This is usually
    * `process.env` or `import.meta.env`.
    */
-  runtimeEnv: import.meta.env,
+  runtimeEnv: process.env,
 
   /**
    * By default, this library will feed the environment variables directly to

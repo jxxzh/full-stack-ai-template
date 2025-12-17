@@ -1,3 +1,5 @@
+'use client'
+
 import { Button } from '@/shared/components/ui/button'
 import { openAlertDialog } from '@/shared/lib/alert-dialog-helper'
 

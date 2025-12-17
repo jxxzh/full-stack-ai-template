@@ -1,6 +1,6 @@
 # AGENTS instructions
 
-## Project Knowledge
+## Backend Project Knowledge
 
 ### Development Environment
 - Use `uv` as the package manager.
@@ -30,9 +30,3 @@ Organize code by functionality instead of file types, keeping code highly cohesi
 ├── AGENTS.md                  # AI 编码代理指南
 └── README.md                  # 项目说明文档
 ```
-
-### Code Style
-- **Functional Programming**: Prefer functional programming over object-oriented programming
-- **Declarative Programming**: Prefer declarative programming over imperative programming
-- **Type Hints**: All function signatures must include complete type hints
-- **Code Reusability**: Avoid code duplication through iteration and modularization

@@ -1,13 +1,4 @@
 {
-  "files.watcherExclude": {
-    "**/routeTree.gen.ts": true
-  },
-  "search.exclude": {
-    "**/routeTree.gen.ts": true
-  },
-  "files.readonlyInclude": {
-    "**/routeTree.gen.ts": true
-  },
   "[javascript]": {
     "editor.defaultFormatter": "biomejs.biome"
   },
@@ -35,6 +26,5 @@
   },
   "files.associations": {
     "*.css": "tailwindcss"
-  },
-  "cSpell.words": ["Jxxzh"]
+  }
 }

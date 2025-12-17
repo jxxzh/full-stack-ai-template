@@ -43,6 +43,7 @@ const staticAlertDialogUIAtom = atom<{
   open: false,
   state: null,
 })
+
 let dialogId = 0
 
 function StaticAlertDialog() {

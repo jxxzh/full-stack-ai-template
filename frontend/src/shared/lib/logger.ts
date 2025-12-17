@@ -1,7 +1,8 @@
 import { createConsola } from 'consola'
+import { env } from '../config/env'
 
 const logger = createConsola({
-  level: import.meta.env.PROD ? 0 : 5, // 生产环境只打印 error 日志
+  level: env.NEXT_PUBLIC_ENV === 'prod' ? 0 : 5, // 生产环境只打印 error 日志
 })
 
 function createTagLogger(tag: string) {
