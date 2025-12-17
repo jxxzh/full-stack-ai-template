@@ -4,7 +4,7 @@ from app.core.logger import logger
 
 router = APIRouter(
     prefix="/health",
-    tags=["health"],
+    tags=["Health"],
 )
 
 

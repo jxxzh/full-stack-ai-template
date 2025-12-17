@@ -41,9 +41,11 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# RequestIDMiddleware 必须在 LoggingMiddleware 之前，因为日志需要 request_id
-app.add_middleware(RequestIDMiddleware)
+# 注意：FastAPI/Starlette 中间件是“后添加先执行”（最后 add 的在最外层）。
+# 因此要让 RequestIDMiddleware 先执行并写入 request.state.request_id，
+# 需要先添加 LoggingMiddleware，再添加 RequestIDMiddleware。
 app.add_middleware(LoggingMiddleware)
+app.add_middleware(RequestIDMiddleware)
 
 # 添加异常处理器
 app.add_exception_handler(APIError, api_exception_handler)
@@ -51,7 +53,7 @@ app.add_exception_handler(Exception, general_exception_handler)
 
 
 # 添加路由
-app.include_router(health.router, tags=["Health"], prefix="/health")
+app.include_router(health.router)
 
 my_agent = create_agent(get_chat_client())
 

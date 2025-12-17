@@ -14,10 +14,9 @@ def setup_logger():
     # Add a console handler with colors and a rich format
     logger.add(
         sys.stderr,
-        level=settings.LOG_LEVEL.upper(),
         format=(
             "<green>{time:YYYY-MM-DD HH:mm:ss.SSS}</green> | "
-            "<level>{level: <8}</level> | "
+            "<level>{level: <4}</level> | "
             "<cyan>{name}</cyan>:<cyan>{function}</cyan>:<cyan>{line}</cyan> - "
             "<level>{message}</level>"
         ),
@@ -29,8 +28,7 @@ def setup_logger():
     # If JSON logging is enabled, add a file handler
     if settings.LOG_FORMAT_JSON:
         logger.add(
-            "logs/app.log",
-            level=settings.LOG_LEVEL.upper(),
+            f"logs/{settings.APP_ENV}.log",
             serialize=True,  # Output logs in JSON format
             rotation="10 MB",  # Rotate the log file when it reaches 10 MB
             retention="7 days",  # Keep logs for up to 7 days

@@ -1,14 +1,24 @@
 import os
+from typing import Literal
 
 from loguru import logger
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
+    # Basic
+    APP_ENV: Literal["development", "production"] = "development"
     APP_NAME: str = "FastAPI Starter"
-    LOG_LEVEL: str = "INFO"
-    LOG_FORMAT_JSON: bool = True
 
+    # logging
+    LOG_FORMAT_JSON: bool = True
+    LOG_REQUEST_BODY: bool = False
+    LOG_RESPONSE_BODY: bool = False
+    LOG_BODY_MAX_BYTES: int = 2048
+    LOG_BODY_MAX_CONTENT_LENGTH: int = 65536
+    LOG_BODY_SKIP_MULTIPART: bool = True
+
+    # LLM
     OPENAI_API_KEY: str
     OPENAI_BASE_URL: str
 
