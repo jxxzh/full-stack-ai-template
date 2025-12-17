@@ -38,7 +38,3 @@ def setup_logger():
             backtrace=True,
             diagnose=True,
         )
-
-
-# Set up the logger when this module is imported
-setup_logger()

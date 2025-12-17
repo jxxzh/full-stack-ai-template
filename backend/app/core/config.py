@@ -1,5 +1,6 @@
 import os
 
+from loguru import logger
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -18,6 +19,7 @@ class Settings(BaseSettings):
 
         # 如果找到了 .env 文件，通过 _env_file 参数传递
         if env_files and "_env_file" not in kwargs:
+            logger.info(f"Loading .env files: {env_files}")
             kwargs["_env_file"] = env_files
 
         super().__init__(**kwargs)
