@@ -12,7 +12,7 @@ class Settings(BaseSettings):
 
     def __init__(self, **kwargs):
         # 动态选择 .env 文件
-        env = os.getenv("ENV", "dev")
+        env = os.getenv("ENV", "development")
         env_candidates = [".env", f".env.{env}"]
         env_files = [path for path in env_candidates if os.path.exists(path)]
 
