@@ -9,12 +9,15 @@ class Settings(BaseSettings):
     LOG_LEVEL: str = "INFO"
     LOG_FORMAT_JSON: bool = True
 
+    OPENAI_API_KEY: str
+    OPENAI_BASE_URL: str
+
     model_config = SettingsConfigDict(env_file_encoding="utf-8")
 
     def __init__(self, **kwargs):
         # 动态选择 .env 文件
         env = os.getenv("ENV", "development")
-        env_candidates = [".env", f".env.{env}"]
+        env_candidates = [".env", f".env.{env}", ".env.local"]
         env_files = [path for path in env_candidates if os.path.exists(path)]
 
         # 如果找到了 .env 文件，通过 _env_file 参数传递

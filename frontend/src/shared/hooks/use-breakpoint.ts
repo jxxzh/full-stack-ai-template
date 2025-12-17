@@ -16,26 +16,28 @@ let isListening = false
 
 // 断点配置（与 Tailwind 保持一致）
 const BREAKPOINTS: BreakpointConfig = {
-  'xs': 0, // => @media (min-width: 0px)
-  'sm': 640, // => @media (min-width: 640px)
-  'md': 768, // => @media (min-width: 768px)
-  'lg': 1024, // => @media (min-width: 1024px)
-  'xl': 1280, // => @media (min-width: 1280px)
+  xs: 0, // => @media (min-width: 0px)
+  sm: 640, // => @media (min-width: 640px)
+  md: 768, // => @media (min-width: 768px)
+  lg: 1024, // => @media (min-width: 1024px)
+  xl: 1280, // => @media (min-width: 1280px)
   '2xl': 1536, // => @media (min-width: 1536px)
 } as const
 
 // 缓存服务端默认值
-const defaultBreakpointInfo: BreakpointInfo = BREAKPOINT_KEYS.reduce((acc, key) => {
-  acc[key as BreakpointKey] = false
-  return acc
-}, {} as BreakpointInfo)
+const defaultBreakpointInfo: BreakpointInfo = BREAKPOINT_KEYS.reduce(
+  (acc, key) => {
+    acc[key as BreakpointKey] = false
+    return acc
+  },
+  {} as BreakpointInfo,
+)
 
 /**
  * 计算当前窗口的响应式信息
  */
 function calculateBreakpoints(): boolean {
-  if (typeof window === 'undefined')
-    return false
+  if (typeof window === 'undefined') return false
 
   const width = window.innerWidth
   const newInfo = {} as BreakpointInfo
@@ -60,8 +62,7 @@ function calculateBreakpoints(): boolean {
  */
 function handleResize() {
   const hasChanged = calculateBreakpoints()
-  if (!hasChanged)
-    return
+  if (!hasChanged) return
 
   for (const subscriber of subscribers) {
     subscriber()
@@ -72,8 +73,7 @@ function handleResize() {
  * 初始化全局监听器
  */
 function initializeListener() {
-  if (typeof window === 'undefined' || isListening)
-    return
+  if (typeof window === 'undefined' || isListening) return
 
   // 初始计算
   if (!breakpointInfo) {
@@ -91,8 +91,7 @@ function initializeListener() {
 
 function getCurrentBreakpoint(breakpointInfo: BreakpointInfo): BreakpointKey {
   for (const key of BREAKPOINT_KEYS) {
-    if (breakpointInfo[key])
-      return key
+    if (breakpointInfo[key]) return key
   }
   return 'xs'
 }
@@ -107,8 +106,7 @@ function useBreakpointInfo(): {
   const info = useSyncExternalStore(
     // subscribe
     (callback) => {
-      if (typeof window === 'undefined')
-        return () => {}
+      if (typeof window === 'undefined') return () => {}
 
       // 确保全局监听器已初始化
       const cleanup = initializeListener()
@@ -151,8 +149,4 @@ function useIsMobile(): boolean {
   return !info.md
 }
 
-export {
-  BREAKPOINTS,
-  useBreakpointInfo,
-  useIsMobile,
-}
+export { BREAKPOINTS, useBreakpointInfo, useIsMobile }

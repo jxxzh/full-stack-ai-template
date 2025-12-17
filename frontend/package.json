@@ -11,7 +11,11 @@
     "check": "biome check --write"
   },
   "dependencies": {
+    "@ag-ui/client": "^0.0.42",
     "@base-ui/react": "^1.0.0",
+    "@copilotkit/react-core": "^1.50.0",
+    "@copilotkit/react-ui": "^1.50.0",
+    "@copilotkit/runtime": "^1.50.0",
     "@t3-oss/env-core": "^0.13.10",
     "@tabler/icons-react": "^3.36.0",
     "@tanstack/react-query": "^5.90.12",

@@ -45,8 +45,9 @@ Refer to the FSD(Feature-Sliced Design) architecture
 │   ├── app/                   
 │   │   ├── core/              # 核心基础设施
 │   │   ├── routes/            # 路由模块（每个模块根据需要内含 router,schema,service等）
+│   │   ├── llm/               # AI服务
 │   │   └── main.py            # 应用入口
-│   ├── logs/                  # 日志目录
+│   ├── logs/                  # 日志
 │   └── pyproject.toml         # 项目元数据和依赖
 ├── frontend/                  # 前端目录
 │   ├── src/                   # 源代码目录（参考FSD）
