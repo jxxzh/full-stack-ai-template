@@ -7,7 +7,7 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 class Settings(BaseSettings):
     # Basic
-    APP_ENV: Literal["development", "production"] = "development"
+    APP_ENV: Literal["development", "production", "testing"] = "development"
     APP_NAME: str = "FastAPI Starter"
 
     # logging
