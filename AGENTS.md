@@ -1,6 +1,6 @@
 # AGENTS instructions
 
-The project is a full-stack application built with TypeScript (React/Tanstack Start) and Python (FastAPI/LangChain).
+The project is a full-stack application built with TypeScript (React/Next.js) and Python (FastAPI/Microsoft Agent Framework).
 
 ## Development Environment
 
