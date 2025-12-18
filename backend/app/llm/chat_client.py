@@ -7,13 +7,13 @@ from app.core.config import settings
 
 
 class ChatClientContext(Enum):
-    PLUS = "plus"
     FLASH = "flash"
+    PLUS = "plus"
     MAX = "max"
 
 
 def get_chat_client(
-    context: ChatClientContext = ChatClientContext.PLUS,
+    context: ChatClientContext = ChatClientContext.FLASH,
 ) -> ChatClientProtocol:
     model_id: str
 
