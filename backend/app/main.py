@@ -1,12 +1,9 @@
-from contextlib import asynccontextmanager
-
 from agent_framework_ag_ui import add_agent_framework_fastapi_endpoint
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.core.config import settings
 from app.core.handlers import api_exception_handler, general_exception_handler
-from app.core.logger import logger, setup_logger
+from app.core.logger import setup_logger
 from app.core.middlewares import LoggingMiddleware, RequestIDMiddleware
 from app.core.schemas import APIError
 from app.llm.agent import create_agent
@@ -17,20 +14,7 @@ from app.routes import health
 setup_logger()
 
 
-@asynccontextmanager
-async def lifespan(_: FastAPI):
-    # Actions on startup
-    logger.info(f"Starting up app: {settings.APP_NAME}")
-    logger.info("Loading resources...")
-    yield
-    # Actions on shutdown
-    logger.info("Shutting down...")
-    logger.info("Releasing resources...")
-
-
-app = FastAPI(
-    lifespan=lifespan,
-)
+app = FastAPI()
 
 # 添加中间件 - 注意顺序很重要！
 app.add_middleware(

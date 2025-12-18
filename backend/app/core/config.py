@@ -11,7 +11,7 @@ class Settings(BaseSettings):
     APP_NAME: str = "FastAPI Starter"
 
     # logging
-    LOG_FORMAT_JSON: bool = True
+    LOG_SAVE_IN_LOCAL_FILE: bool = True
     LOG_REQUEST_BODY: bool = False
     LOG_RESPONSE_BODY: bool = False
     LOG_BODY_MAX_BYTES: int = 2048
