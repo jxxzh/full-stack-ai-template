@@ -5,6 +5,7 @@ import {
   ExperimentalEmptyAdapter,
 } from '@copilotkit/runtime'
 import type { NextRequest } from 'next/server'
+import { env } from '@/shared/config/env'
 
 // 1. You can use any service adapter here for multi-agent support. We use
 //    the empty adapter since we're only using one agent.
@@ -15,7 +16,7 @@ const serviceAdapter = new ExperimentalEmptyAdapter()
 const runtime = new CopilotRuntime({
   agents: {
     // Our FastAPI endpoint URL
-    my_agent: new HttpAgent({ url: 'http://localhost:8000/agent' }),
+    my_agent: new HttpAgent({ url: `${env.NEXT_PUBLIC_API_BASE_URL}/agent` }),
   },
 })
 

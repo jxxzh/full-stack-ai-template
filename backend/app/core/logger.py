@@ -1,5 +1,6 @@
 import logging
 import sys
+from types import FrameType
 
 from loguru import logger
 
@@ -17,7 +18,7 @@ class InterceptHandler(logging.Handler):
         except ValueError:
             level = record.levelno
 
-        frame = logging.currentframe()
+        frame: FrameType | None = logging.currentframe()
         depth = 2
         while frame and frame.f_code.co_filename in {logging.__file__, __file__}:
             frame = frame.f_back
@@ -34,16 +35,9 @@ def setup_logger() -> None:
     """
 
     logger.remove()  # 移除默认的handler
-
     # 添加控制台handler
     logger.add(
         sys.stderr,
-        format=(
-            "<green>{time:YYYY-MM-DD HH:mm:ss.SSS}</green> | "
-            "<level>{level: <8}</level> | "
-            "<cyan>{name}</cyan>:<cyan>{function}</cyan>:<cyan>{line}</cyan> | "
-            "<level>{message}</level>"
-        ),
         colorize=True,
         backtrace=True,  # Show full stack trace on exceptions
         diagnose=True,  # Add exception values for easier debugging
@@ -52,7 +46,7 @@ def setup_logger() -> None:
     # 保存日志到本地文件
     if settings.LOG_SAVE_IN_LOCAL_FILE:
         logger.add(
-            f"logs/{settings.APP_ENV}.log",
+            f"logs/{settings.ENV}.log",
             serialize=True,
             rotation="10 MB",
             retention="7 days",
@@ -61,21 +55,15 @@ def setup_logger() -> None:
             diagnose=True,
         )
 
-    # 将logging的标准日志切换到loguru
-    logging.basicConfig(
-        handlers=[InterceptHandler()],
-        level=logging.INFO,
-        force=True,
-    )
+    # 将 logging 的标准日志切换到 loguru
+    logging.basicConfig(handlers=[InterceptHandler()], level=logging.INFO, force=True)
 
-    # 将fastapi的默认日志处理切换到自定义处理
-    for logger_name in ("uvicorn", "uvicorn.error", "fastapi"):
-        std_logger = logging.getLogger(logger_name)
+    # 清除所有已存在的 logger 的 handler，并设置它们向上传播到 root logger
+    # 这样它们都会被 root logger 的 InterceptHandler 拦截并转发给 loguru
+    for name in logging.root.manager.loggerDict.keys():
+        std_logger = logging.getLogger(name)
         std_logger.handlers = []
         std_logger.propagate = True
 
-    # 禁用uvicorn的访问日志(已有自定义的LoggingMiddleware)
+    # 禁用 uvicorn 的访问日志，因为我们已经有了自定义的 LoggingMiddleware
     logging.getLogger("uvicorn.access").disabled = True
-
-    # 禁用agent_framework_ag_ui的默认日志
-    logging.getLogger("agent_framework_ag_ui").setLevel(logging.CRITICAL)
