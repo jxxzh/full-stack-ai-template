@@ -1,5 +1,4 @@
-'use client'
-
+import { useTheme } from '@/shared/lib/theme/provider'
 import {
   IconAlertOctagon,
   IconAlertTriangle,
@@ -7,7 +6,6 @@ import {
   IconInfoCircle,
   IconLoader,
 } from '@tabler/icons-react'
-import { useTheme } from 'next-themes'
 import { Toaster as Sonner, type ToasterProps } from 'sonner'
 
 const Toaster = ({ ...props }: ToasterProps) => {

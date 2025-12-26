@@ -6,7 +6,7 @@
 ## 技术栈
 
 ### 前端
-- **Next.js 16** - 全栈 React 框架（App Router）
+- **Tanstack Start** - 全栈 React 框架（App Router）
 - **React 19** - UI 基础框架
 - **TypeScript 5** - 类型安全
 - **Shadcn UI** - 组件库（基于 Base UI）
@@ -71,7 +71,8 @@
 ├── entities/    # 业务实体
 ├── features/    # 业务功能
 ├── widgets/     # 组合组件
-└── app/         # 应用入口（路由和配置）
+├── routes/      # 路由
+└── app/         # 应用入口
 
 细分类型：
 ├── ui/          # UI 组件

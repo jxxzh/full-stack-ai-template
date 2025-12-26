@@ -1,10 +1,10 @@
 'use client'
 
 import { IconDeviceDesktop, IconMoon, IconSun } from '@tabler/icons-react'
-import { useTheme } from 'next-themes'
 import { useEffect, useMemo, useState } from 'react'
 
 import { Button } from '@/shared/components/ui/button'
+import { useTheme } from './provider'
 
 export const ThemeToggle = () => {
   const [mounted, setMounted] = useState(false)

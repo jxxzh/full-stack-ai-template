@@ -19,7 +19,7 @@ Keep this managed block so 'openspec update' can refresh the instructions.
 
 # AGENTS instructions
 
-The project is a full-stack application built with TypeScript (React/Next.js) and Python (FastAPI/Microsoft Agent Framework).
+The project is a full-stack application built with TypeScript (React/Tanstack Start) and Python (FastAPI/Microsoft Agent Framework).
 
 For the frontend, refer to @/frontend/AGENTS.md file.
 

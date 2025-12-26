@@ -9,7 +9,7 @@
   - Use check command to lint and format code: `pnpm check` or `biome check --write`
 
 ### Core Stack
-- Nextjs: Full-stack framework for React
+- Tanstack Start: Full-stack framework for React
 - Shadcn UI: A set of beautifully designed components. In this project, it is built on top of **Base UI**.
   - Use shadcn mcp to find and integrate useful components into the project.
 
@@ -17,7 +17,7 @@
 Refer to the FSD(Feature-Sliced Design) architecture, organize code around features, domains, and layered boundaries, rather than file type.
 
 **Core Concepts**
-- Layers: The Backbone of Dependency Direction, from lowest to highest: shared, entities, features, widgets, app(Routes and Application in Next.js App Router).
+- Layers: The Backbone of Dependency Direction, from lowest to highest: shared, entities, features, widgets, routes, app.
 - Slices: Grouping by Business Meaning, e.g. user, product, order, etc.
 - Segments: Grouping by Technical Purpose, e.g. ui, api, model, lib, config, etc.
 
@@ -25,3 +25,4 @@ Refer to the FSD(Feature-Sliced Design) architecture, organize code around featu
 - Functional Programming First
 - Focus on cohesion, prioritize composition, avoid prop drilling
 - Split large component, function, and file into smaller, focused ones
+- 
